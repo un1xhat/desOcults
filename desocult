@@ -13,6 +13,7 @@ with open(txt, "r") as r:
             get = requests.get(link)
             if get.status_code == 200:
                 print("{} ==> ok".format(link))
+            # aqui busca por diretórios
             link = url + "/" + plink.rstrip("\n")
             get = requests.get(link)
             if get.status_code == 200:
