@@ -1,0 +1,20 @@
+#!/usr/bin/python
+#-*-coding:utf-8-*-
+import requests
+# extenções a buscar
+ext = [".php", ".html", ".htm", ".txt", ".png", ".jpg", ".sql", ".mp4", "mp3"]
+url = input("URL: ")
+txt = input("TXT: ")
+with open(txt, "r") as r:
+    for pext in ext:
+        for plink in r.readlines():
+            # aqui busca por arquivos
+            link = url + "/" + plink.rstrip("\n") + pext
+            get = requests.get(link)
+            if get.status_code == 200:
+                print("{} ==> ok".format(link))
+            link = url + "/" + plink.rstrip("\n")
+            get = requests.get(link)
+            if get.status_code == 200:
+                print("{} ==> ok".format(link))          
+r.close()
